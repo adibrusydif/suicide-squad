@@ -7,8 +7,12 @@ import sagaPlugin from 'reactotron-redux-saga'
 if (Config.useReactotron) {
   // https://github.com/infinitered/reactotron for more options!
   Reactotron
-    .configure({ name: 'Ignite App' })
+    .configure({ name: 'R-Agent' })
     .useReactNative()
+    .use(trackGlobalErrors())
+    .use(openInEditor())
+    .use(asyncStorage())
+    .use(networking())
     .use(reduxPlugin({ onRestore: Immutable }))
     .use(sagaPlugin())
     .connect()
