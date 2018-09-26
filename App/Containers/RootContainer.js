@@ -5,30 +5,29 @@ import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
 
-// Styles
-import styles from './Styles/RootContainerStyles'
-
 class RootContainer extends Component {
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
-      this.props.startup()
+      this.props.appRequest()
     }
   }
 
   render () {
     return (
-      <View style={styles.applicationView}>
-        <StatusBar barStyle='light-content' />
-        <ReduxNavigation />
-      </View>
+      <ReduxNavigation />
     )
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-const mapDispatchToProps = (dispatch) => ({
-  startup: () => dispatch(StartupActions.startup())
+const mapStateToProps = (state) => ({
+  initApp: state.startup.app
 })
 
-export default connect(null, mapDispatchToProps)(RootContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    appRequest: () => dispatch(StartupActions.appRequest())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)

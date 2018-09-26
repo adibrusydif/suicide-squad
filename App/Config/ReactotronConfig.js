@@ -1,6 +1,11 @@
 import Config from '../Config/DebugConfig'
 import Immutable from 'seamless-immutable'
-import Reactotron from 'reactotron-react-native'
+import Reactotron, {
+  trackGlobalErrors,
+  openInEditor,
+  asyncStorage,
+  networking
+} from 'reactotron-react-native'
 import { reactotronRedux as reduxPlugin } from 'reactotron-redux'
 import sagaPlugin from 'reactotron-redux-saga'
 

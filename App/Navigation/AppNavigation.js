@@ -1,17 +1,25 @@
 import { StackNavigator } from 'react-navigation'
-import LaunchScreen from '../Containers/LaunchScreen'
-
+import Introduction from '../Containers/Introduction'
+import ChangePassword from '../Containers/FirstLogin/changePassword'
+import TakePhoto from '../Containers/FirstLogin/takePhoto'
+import MainTab from '../Containers/MainTab'
+import Login from '../Containers/Login'
 import styles from './Styles/NavigationStyles'
 
-// Manifest of possible screens
 const PrimaryNav = StackNavigator({
-  LaunchScreen: { screen: LaunchScreen }
+  // SplashScreen: { screen: SplashScreen },
+  IntroductionScreen: { screen: Introduction },
+  LoginScreen: { screen: Login },
+  ChangePasswordScreen: { screen: ChangePassword },
+  TakePhotoScreen: { screen: TakePhoto },
+  MainTabScreen: { screen: MainTab },
 }, {
-  // Default config for all screens
-  headerMode: 'none',
-  initialRouteName: 'LaunchScreen',
+  initialRouteName: 'IntroductionScreen',
   navigationOptions: {
-    headerStyle: styles.header
+    headerStyle: styles.header,
+    headerTitleStyle: styles.tintColor,
+    headerBackTitleStyle: "#ffffff",
+    headerTintColor: "#ffffff"
   }
 })
 
